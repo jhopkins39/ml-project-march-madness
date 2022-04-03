@@ -6,19 +6,24 @@ class Dataset():
         self.datadir = datadir
         self.regular_results = pd.read_csv(datadir + "RegularSeasonDetailedResults.csv")
         self.tourney_results = pd.read_csv(datadir + "TourneyDetailedResults.csv")
-        self.compact_headers = pd.read_csv(datadir + "RegularSeasonCompactResults.csv", header=0, nrows=0).columns.tolist()
 
-        self.teams = pd.read_csv(datadir + "Teams.csv", index_col='Team_Id').to_dict()['Team_Name']
+        # Ignoring season and daynum in the headers
+        self.compact_headers = pd.read_csv(datadir + "RegularSeasonCompactResults.csv", header=0, nrows=0).columns.tolist()[2:]
+        self.detailed_headers = regular_results.columns.tolist()[2:]
+
+        df = pd.read_csv(datadir + "Teams.csv")
+        self.teams = dict(zip(df.Team_Id, df.Team_Name))
         self.seasons = pd.read_csv(datadir + "Seasons.csv")
 
         self.seeds = pd.read_csv(datadir + "TourneySeeds.csv")
         self.slots = pd.read_csv(datadir + "TourneySlots.csv")
 
-    def getYears(self):
-        return self.Seasons.unique()
-
     def getTeam(self, id):
         return self.teams[id]
 
-    def getSeed(self, season):
-        return self.seeds.loc[seeds['Season'].isin(list(season))].set_index('Team').to_dict()['Seed']
+    def getYears(self):
+        return self.Seasons.unique()
+
+    def getSeeds(self, season):
+        df = self.seeds.loc[seeds['Season'].isin(list(season))]
+        return dict(zip(df.Team, df.Seed))
