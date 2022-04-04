@@ -1,3 +1,10 @@
+"""For loading and reading data files
+
+  Typical usage:
+      from dataset import Dataset
+      ds = Dataset()
+      ds.<method_name>()
+"""
 import pandas as pd
 
 class Dataset():
