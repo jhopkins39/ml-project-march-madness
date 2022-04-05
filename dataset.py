@@ -94,9 +94,7 @@ class Dataset():
         return dict(zip(df.Team, df.Seed))
 
     def getRegularGames(self, headers=None, season=None, compact=True):
-        """Returns a dataframe for regular season game data.
-
-        "Wscore, Lscore, Numot" 
+        """Returns dataframes for regular season data.
         
         Retrieves the game data from the regular seasons of the given years, 
         including the detailed game data if compact is False.
@@ -109,7 +107,8 @@ class Dataset():
             compact: if True only compact data columns will be returned
 
         Returns:
-            A pandas DataFrame containing the relevant regular season data.
+            A DataFrame containing the winning and losing teams,
+            A DataFrame containing the relevant regular season data.
         """
         if season is None:
             return self.regular_results[self.team_headers], self.regular_results[headers]
@@ -120,7 +119,7 @@ class Dataset():
         return results[self.team_headers], results[headers]
 
     def getTourneyGames(self, headers=None, season=None, compact=True):
-        """Returns a dataframe for tourney game data.
+        """Returns dataframes for tourney game data.
         
         Retrieves the tourney data from the given years, including the 
         detailed tourney data if compact is False.
@@ -133,7 +132,8 @@ class Dataset():
             compact: if True only compact data columns will be returned
 
         Returns:
-            A pandas DataFrame containing the relevant tourney data.
+            A DataFrame containing the winning and losing teams,
+            A DataFrame containing the relevant tourney data.
         """
         if season is None:
             return self.tourney_results[headers]
