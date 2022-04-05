@@ -117,7 +117,7 @@ class Dataset():
         results = self.regular_results.loc[self.regular_results['Season'].isin(list(season))]
         return results[self.team_headers], results[headers]
 
-    def getTourneyGames(self, season=None, compact=True):
+    def getTourneyGames(self, headers=None, season=None, compact=True):
         """Returns a dataframe for tourney game data.
         
         Retrieves the tourney data from the given years, including the 
