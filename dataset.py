@@ -39,8 +39,12 @@ class Dataset():
         self.regular_results = pd.concat((regular_comp.loc[regular_comp['Season'] < 2003], regular_det))
         self.tourney_results = pd.concat((tourney_comp.loc[tourney_comp['Season'] < 2003], tourney_det))
 
+        self.team_headers = ['Wteam', 'Lteam']
         self.compact_headers = regular_comp.columns.tolist()[2:]
         self.detailed_headers = regular_det.columns.tolist()[2:]
+        for h in self.team_headers:
+            self.compact_headers.remove(h)
+            self.detailed_headers.remove(h)
 
         df = pd.read_csv(datadir + "Teams.csv")
         self.teams = dict(zip(df.Team_Id, df.Team_Name))
@@ -105,10 +109,11 @@ class Dataset():
             A pandas DataFrame containing the relevant regular season data.
         """
         if type(season) is int: season = [season]
-        headers = self.compact_headers if compact else self.detailed_headers
+        data_headers = self.compact_headers if compact else self.detailed_headers
         if season is None:
-            return self.regular_results[headers]
-        return self.regular_results.loc[self.regular_results['Season'].isin(list(season))][headers]
+            return self.regular_results[self.team_headers], self.regular_results[data_headers]
+        results = self.regular_results.loc[self.regular_results['Season'].isin(list(season))]
+        return results[self.team_headers], results[data_headers]
 
     def getTourneyGames(self, season=None, compact=True):
         """Returns a dataframe for tourney game data.
@@ -127,7 +132,8 @@ class Dataset():
             A pandas DataFrame containing the relevant tourney data.
         """
         if type(season) is int: season = [season]
-        headers = self.compact_headers if compact else self.detailed_headers
+        data_headers = self.compact_headers if compact else self.detailed_headers
         if season is None:
-            return self.tourney_results[headers]
-        return self.tourney_results.loc[self.tourney_results['Season'].isin(list(season))][headers]
+            return self.tourney_results[data_headers]
+        results = self.tourney_results.loc[self.tourney_results['Season'].isin(list(season))]
+        return results[self.team_headers], results[data_headers]
