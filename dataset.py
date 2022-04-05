@@ -93,7 +93,7 @@ class Dataset():
         df = self.seeds.loc[self.seeds['Season'] == season]
         return dict(zip(df.Team, df.Seed))
 
-    def getRegularGames(self, season=None, compact=True):
+    def getRegularGames(self, headers=None, season=None, compact=True):
         """Returns a dataframe for regular season game data.
         
         Retrieves the game data from the regular seasons of the given years, 
@@ -109,12 +109,13 @@ class Dataset():
         Returns:
             A pandas DataFrame containing the relevant regular season data.
         """
-        if type(season) is int: season = [season]
-        data_headers = self.compact_headers if compact else self.detailed_headers
         if season is None:
-            return self.regular_results[self.team_headers], self.regular_results[data_headers]
+            return self.regular_results[self.team_headers], self.regular_results[headers]
+        if type(season) is int: season = [season]
+        if headers is None:
+            headers = self.compact_headers if compact else self.detailed_headers
         results = self.regular_results.loc[self.regular_results['Season'].isin(list(season))]
-        return results[self.team_headers], results[data_headers]
+        return results[self.team_headers], results[headers]
 
     def getTourneyGames(self, season=None, compact=True):
         """Returns a dataframe for tourney game data.
@@ -132,9 +133,10 @@ class Dataset():
         Returns:
             A pandas DataFrame containing the relevant tourney data.
         """
-        if type(season) is int: season = [season]
-        data_headers = self.compact_headers if compact else self.detailed_headers
         if season is None:
-            return self.tourney_results[data_headers]
+            return self.tourney_results[headers]
+        if type(season) is int: season = [season]
+        if headers is None:
+            headers = self.compact_headers if compact else self.detailed_headers
         results = self.tourney_results.loc[self.tourney_results['Season'].isin(list(season))]
-        return results[self.team_headers], results[data_headers]
+        return results[self.team_headers], results[headers]
