@@ -1,6 +1,6 @@
 """For loading and reading data files
 
-  Typical usage:
+  Typical usage example:
       from dataset import Dataset
       ds = Dataset()
       ds.<method_name>()
@@ -39,8 +39,8 @@ class Dataset():
         self.regular_results = pd.concat((regular_comp.loc[regular_comp['Season'] < 2003], regular_det))
         self.tourney_results = pd.concat((tourney_comp.loc[tourney_comp['Season'] < 2003], tourney_det))
 
-        self.compact_headers = regular_comp.columns.tolist()
-        self.detailed_headers = regular_det.columns.tolist()
+        self.compact_headers = regular_comp.columns.tolist()[2:]
+        self.detailed_headers = regular_det.columns.tolist()[2:]
 
         df = pd.read_csv(datadir + "Teams.csv")
         self.teams = dict(zip(df.Team_Id, df.Team_Name))
