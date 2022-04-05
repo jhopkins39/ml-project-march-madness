@@ -18,11 +18,14 @@ def process_data():
 def use_model():
 
     ds = dataset.Dataset()
-    curr_data = ds.getRegularGames()
+    curr_data = ds.getRegularGames(["Wscore","Lscore", "Numot"])[1]
     curr_data = np.array(curr_data)
 
     X_train = curr_data
 
+    print("Xtrain length: ")
+    print(len(X_train))
+    print("Xtrain: ")
     print(X_train)
 
 

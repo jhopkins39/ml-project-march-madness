@@ -95,6 +95,8 @@ class Dataset():
 
     def getRegularGames(self, headers=None, season=None, compact=True):
         """Returns a dataframe for regular season game data.
+
+        "Wscore, Lscore, Numot" 
         
         Retrieves the game data from the regular seasons of the given years, 
         including the detailed game data if compact is False.
