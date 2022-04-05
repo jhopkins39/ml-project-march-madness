@@ -67,7 +67,7 @@ class Dataset():
         """
         return self.teams[id]
 
-    def getYears(self):
+    def getYears(self, compact=True):
         """Gets a list of all the season years.
         
         Retrieves all the unique years from the self.seasons dataframe.
@@ -75,7 +75,8 @@ class Dataset():
         Returns:
             A python list of years with game data.
         """
-        return self.seasons.Season.unique().tolist()
+        years = self.seasons.Season.unique().tolist()
+        return years if compact else years[years.index(2003):]
 
     def getSeeds(self, season):
         """Gets the seeds for each team in the given season.
