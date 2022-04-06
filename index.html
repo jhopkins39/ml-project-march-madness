@@ -48,8 +48,8 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
         reading in and parsing the various csv files provided by Kaggle. The wrapper class allowed us to modularize 
         data processing and extract useful statistics. Among its functionalities are the ability to specify what data 
         columns the user would want and from which part of the season they want the data from: regular season or tournament 
-        season. We also map a team's id to their seed for the season in a dictionary for quick lookup and determine 
-        the final four participants of the season tourney by looking through the tourney game data.
+        season. We also mapped the teams' id to their seed for the season in a dictionary for ease of access and determined 
+        the final four participants of the season tourney by searching through the tourney game data.
         <br>
         Our dataset also contains some string inputs for the location of the winner of each game in the regular and tourney 
         seasons: 'H' for home, 'A' for away, and 'N' for neutral. However, most models don't take kindly to string inputs, so 
