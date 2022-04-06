@@ -36,8 +36,8 @@ class Dataset():
         regular_det = pd.read_csv(datadir + "RegularSeasonDetailedResults.csv")
         tourney_det = pd.read_csv(datadir + "TourneyDetailedResults.csv")
 
-        self.regular_results = pd.concat((regular_comp.loc[regular_comp['Season'] < 2003], regular_det))
-        self.tourney_results = pd.concat((tourney_comp.loc[tourney_comp['Season'] < 2003], tourney_det))
+        self.regular_results = pd.concat((regular_comp.loc[regular_comp['Season'] < 2003], regular_det)).replace(['H', 'A', 'N'], [1, -1, 0])
+        self.tourney_results = pd.concat((tourney_comp.loc[tourney_comp['Season'] < 2003], tourney_det)).replace(['H', 'A', 'N'], [1, -1, 0])
 
         self.team_headers = ['Wteam', 'Lteam']
         self.compact_headers = regular_comp.columns.tolist()[2:]
