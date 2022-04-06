@@ -157,8 +157,8 @@ class Dataset():
             season: an integer of the year of the season to look up
 
         Returns:
-            A numpy array containing the four semifinalist team ids
+            A list containing the four semifinalist team ids
         """
         semifinal_daynum = 152
         teams, days = self.getTourneyGames(headers=['Daynum'], season=season)
-        return teams.loc[days['Daynum']==semifinal_daynum].to_numpy().flatten()
+        return teams.loc[days['Daynum']==semifinal_daynum].to_numpy().flatten().tolist()
