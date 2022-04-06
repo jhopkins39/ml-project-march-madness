@@ -33,11 +33,7 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
           bracket challenges everywhere.
         </p>
     <h2 style="color:white; text-decoration:underline"> Methods </h2>
-      <p style="color:white;"> Right now there are a couple different methods we are looking at. Gaussian 
-        Mixture Model (GMM) may be very useful because it will give teams actual percent chances of making the
-        final four.  This soft clustering could be very useful.  We were also thinking about doing a random 
-        forest model (when we learn more hopefully) and even a neural net to give us the teams who will 
-        prevail.
+      <p style="color:white;"> Right now there are a couple different methods we are looking at. The first method we are going to try is a logistic regression on the the team's seed in the tournament. It finds the probability on whether or not a team makes it to the final four based on their starting seed. We were also thinking about doing a random forest model (when we learn more hopefully) and even a neural net to give us the teams who will  prevail.
       </p>
       <h4 style="color:white;"> Data Preprocessing </h4>
       <p style="color:white;">
@@ -58,7 +54,7 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
         The compact data only contains six features relevant to each game, with two of them being the ids of the winning 
         and losing team.
       </p>
-      <p style="color:white;"> Right now there are a couple different methods we are looking at. The first method we are going to try is a logistic regression on the the team's seed in the tournament. We were also thinking about doing a random forest model (when we learn more hopefully) and even a neural net to give us the teams who will  prevail.
+      <p style="color:white;"> 
       </p>
     <h2 style="color:white; text-decoration:underline"> Potential Results and Discussion </h2>
     <p style="color:white;"> Hopefully the results can provide accurate predictions on who will advance to the final four.  If we’re guessing on the 68 teams that are selected to the tournament, this may be too simple because you are essentially guessing from only 17 teams which team will advance all the way four different times.  If this proves to be too easy (or impossible), we will then work on selecting the final four from end of season stats (excluding conference tournament).  This would be much more difficult, but much more interesting.
