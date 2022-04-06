@@ -94,7 +94,7 @@ class Dataset():
         return dict(zip(df.Team, df.Seed))
 
     def getRegularGames(self, headers=None, season=None, compact=True):
-        """Returns dataframes for regular season data.
+        """Gets the dataframes for regular season data.
         
         Retrieves the game data from the regular seasons of the given years, 
         including the detailed game data if compact is False.
@@ -120,7 +120,7 @@ class Dataset():
         return results[self.team_headers], results[headers]
 
     def getTourneyGames(self, headers=None, season=None, compact=True):
-        """Returns dataframes for tourney game data.
+        """Gets the dataframes for tourney game data.
         
         Retrieves the tourney data from the given years, including the 
         detailed tourney data if compact is False.
@@ -146,6 +146,17 @@ class Dataset():
         return results[self.team_headers], results[headers]
 
     def getFinalFour(self, season):
-        semifinal = 152
+        """Gets the final four teams for a season
+
+        Looks up the team ids that are competing on semifinals day (daynum=152) 
+        of a given season from the tourney data.
+
+        Args:
+            season: an integer of the year of the season to look up
+
+        Returns:
+            A numpy array containing the four semifinalist team ids
+        """
+        semifinal_daynum = 152
         teams, days = self.getTourneyGames(headers=['Daynum'], season=season)
-        return teams.loc[days['Daynum']==semifinal].to_numpy().flatten()
+        return teams.loc[days['Daynum']==semifinal_daynum].to_numpy().flatten()
