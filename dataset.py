@@ -78,7 +78,7 @@ class Dataset():
         years = self.seasons.Season.unique().tolist()
         return years if compact else years[years.index(2003):]
 
-    def getSeeds(self, season):
+    def getSeeds(self, season, as_int=False):
         """Gets the seeds for each team in the given season.
         
         Retrives the team ids and their corresponding seeds for the given 
@@ -91,6 +91,8 @@ class Dataset():
              A dict mapping team ids to their seeds for the season.
         """
         df = self.seeds.loc[self.seeds['Season'] == season]
+        if as_int:
+            df.Seed = df.Seed.str.extract('(\d+)').astype(int)
         return dict(zip(df.Team, df.Seed))
 
     def getRegularGames(self, headers=None, season=None, compact=True):
