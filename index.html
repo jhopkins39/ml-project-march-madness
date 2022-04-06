@@ -50,7 +50,9 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
         <br>
         Our dataset also contains some string inputs for the location of the winner of each game in the regular and tourney 
         seasons: 'H' for home, 'A' for away, and 'N' for neutral. However, most models don't take kindly to string inputs, so 
-        we replaced them with the following discrete values: '1' for home, '-1' for away, and '0' for neutral.
+        we replaced them with the following discrete values: '1' for home, '-1' for away, and '0' for neutral. In addition, we 
+        extracted the integers from the seeds in order for them to be valid inputs for a logistic regression model. This does 
+        have the side effect of making them region independent, although we believe that to be a minor factor.
         <br>
         Finally, we decided against doing any feature selection since we are currently only working with the compact data. 
         The compact data only contains six features relevant to each game, with two of them being the ids of the winning 
