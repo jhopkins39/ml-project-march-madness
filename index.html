@@ -16,9 +16,9 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
           that make the tournament are ranked and play in a bracket style tournament until one is left.  
           People compete against their friends to try to guess the winners of the tournament or at least 
           guess more than the friends.
-    </p>
+        </p>
     <h2 style="color:white; text-decoration:underline"> Dataset Explantaion </h2>
-        <p style="color:white;"> Our data set, which we have downloaded from kaggle, includes many important
+        <p style="color:white;"> Our data set, which we have downloaded from Kaggle, includes many important
           features which describe a team.  It has the experience of the team by information such as how many
           of the players have played in a tournament before, their record, the strength of schedule, the NCAA
           ranking, the conference they play in, the point differential, the points allowed, the points scored,
@@ -26,19 +26,36 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
           <br>
             <a href="https://www.kaggle.com/c/march-machine-learning-mania-2017/data" target="_blank"> Check out the datasets
               here. </a>
-       </p>
+        </p>
     <h2 style="color:white; text-decoration:underline"> Problem Definition </h2>
-        <p style="color:white;">The goal of our project is to predict the final four teams of the NCAA men’s 
+        <p style="color:white;"> The goal of our project is to predict the final four teams of the NCAA men’s 
           march madness tournament.  This could be very useful for people trying to beat out their friends in
           bracket challenges everywhere.
-    </p>
+        </p>
     <h2 style="color:white; text-decoration:underline"> Methods </h2>
       <p style="color:white;"> Right now there are a couple different methods we are looking at. Gaussian 
         Mixture Model (GMM) may be very useful because it will give teams actual percent chances of making the
         final four.  This soft clustering could be very useful.  We were also thinking about doing a random 
         forest model (when we learn more hopefully) and even a neural net to give us the teams who will 
         prevail.
-     </p>
+      </p>
+      <h4 style="color:white;"> Data Preprocessing </h4>
+      <p style="color:white;">
+        All of the data preprocessing was done using Pandas DataFrames. First, we created a wrapper class for 
+        reading in and parsing the various csv files provided by Kaggle. The wrapper class allowed us to modularize 
+        data processing and extract useful statistics. Among its functionalities are the ability to specify what data 
+        columns the user would want and from which part of the season they want the data from: regular season or tournament 
+        season. We also map a team's id to their seed for the season in a dictionary for quick lookup. We also determine 
+        the final four participants of the season tourney by looking through the tourney game data.
+        <br>
+        Our dataset also contains some string inputs for the location of the winner of each game in the regular and tourney 
+        seasons: 'H' for home, 'A' for away, and 'N' for neutral. However, most models don't take kindly to string inputs, so 
+        we replaced them with the following discrete values: '1' for home, '-1' for away, and '0' for neutral.
+        <br>
+        Finally, we decided against doing any feature selection since we are currently only working with the compact data. 
+        The compact data only contains six features relevant to each game, with two of them being the ids of the winning 
+        and losing team.
+      </p>
     <h2 style="color:white; text-decoration:underline"> Potential Results and Discussion </h2>
     <p style="color:white;"> Hopefully the results can provide accurate predictions on who will advance to the final four.  If we’re guessing on the 68 teams that are selected to the tournament, this may be too simple because you are essentially guessing from only 17 teams which team will advance all the way four different times.  If this proves to be too easy (or impossible), we will then work on selecting the final four from end of season stats (excluding conference tournament).  This would be much more difficult, but much more interesting.
     </p>

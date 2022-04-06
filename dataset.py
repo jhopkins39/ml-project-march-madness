@@ -85,7 +85,7 @@ class Dataset():
         season.
 
         Args:
-            season: an integer representing the season to look up.
+            season: an integer for the year of the season to look up.
 
         Returns:
              A dict mapping team ids to their seeds for the season.
