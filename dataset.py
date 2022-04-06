@@ -102,6 +102,7 @@ class Dataset():
         for more details.
 
         Args:
+            headers: a list of data headers to return
             season: an integer or list of integers for the years of regular 
             season game data to retrieve
             compact: if True only compact data columns will be returned
@@ -110,11 +111,11 @@ class Dataset():
             A DataFrame containing the winning and losing teams,
             A DataFrame containing the relevant regular season data.
         """
+        if headers is None:
+            headers = self.compact_headers if compact else self.detailed_headers
         if season is None:
             return self.regular_results[self.team_headers], self.regular_results[headers]
         if type(season) is int: season = [season]
-        if headers is None:
-            headers = self.compact_headers if compact else self.detailed_headers
         results = self.regular_results.loc[self.regular_results['Season'].isin(list(season))]
         return results[self.team_headers], results[headers]
 
@@ -127,6 +128,7 @@ class Dataset():
         for more details.
 
         Args:
+            headers: a list of data headers to return
             season: an integer or list of integers for the years of regular 
             season game data to retrieve
             compact: if True only compact data columns will be returned
@@ -135,10 +137,15 @@ class Dataset():
             A DataFrame containing the winning and losing teams,
             A DataFrame containing the relevant tourney data.
         """
-        if season is None:
-            return self.tourney_results[headers]
-        if type(season) is int: season = [season]
         if headers is None:
             headers = self.compact_headers if compact else self.detailed_headers
+        if season is None:
+            return self.tourney_results[self.team_headers], self.tourney_results[headers]
+        if type(season) is int: season = [season]
         results = self.tourney_results.loc[self.tourney_results['Season'].isin(list(season))]
         return results[self.team_headers], results[headers]
+
+    def getFinalFour(self, season):
+        semifinal = 152
+        teams, days = self.getTourneyGames(headers=['Daynum'], season=season)
+        return teams.loc[days['Daynum']==semifinal].to_numpy().flatten()
