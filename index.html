@@ -48,7 +48,7 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
         reading in and parsing the various csv files provided by Kaggle. The wrapper class allowed us to modularize 
         data processing and extract useful statistics. Among its functionalities are the ability to specify what data 
         columns the user would want and from which part of the season they want the data from: regular season or tournament 
-        season. We also map a team's id to their seed for the season in a dictionary for quick lookup. We also determine 
+        season. We also map a team's id to their seed for the season in a dictionary for quick lookup and determine 
         the final four participants of the season tourney by looking through the tourney game data.
         <br>
         Our dataset also contains some string inputs for the location of the winner of each game in the regular and tourney 
@@ -67,14 +67,14 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
       </p>
     <h2 style="color:white; text-decoration:underline"> Potential Results and Discussion </h2>
     <p style="color:white;"> 
-      We used the scikit-learn Logistic Regression library to run logistic regression on our data.  Our dataset was very large and difficult to manage. 
+      We used the scikit-learn Logistic Regression library to run logistic regression with L2 regularization on our data.  Our dataset was very large and difficult to manage. 
          To condense it we only looked at the seed data given in the dataset.  
          We had to parse through it and change all the seeding from their complicated strings to ints.  
          Using the library took some time to figure out, but eventually passed in the training data.  
          We used all the tournament data from 2003 to 2016 to try to predict the 2017 data.  
          If you look at the probabilities, three of the 2017 final four had high probabilities of being a final four team.  
          We count this as a success, but believe other models could be more useful. 
-          We’ve also thought about if other features could be effective in estimating the teams.
+         We have also thought about if other features could be effective in estimating the teams.
     </p>
     <h4 style="color:white;"> Metrics </h4>
     <p style="color:white;">
