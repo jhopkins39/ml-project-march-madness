@@ -8,6 +8,10 @@ from sklearn.metrics import r2_score
 import csv
 import dataset
 
+import seaborn as sns
+
+
+
 final4teams = {
 	
 	2003: (1242,1266,1393,1400),
@@ -186,6 +190,9 @@ def use_model():
 	r2 = r2_score(predictions, test[:,1])
 	print("r2_score: ")
 	print(r2)
+
+
+	sns.regplot(x=train, y=data[:,1], data=data, logistic=True, ci=None)
 
 
 
