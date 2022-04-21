@@ -10,6 +10,8 @@ import dataset
 
 import seaborn as sns
 
+#VERY VERY BAD
+# THIS FILE NEEDS TO BE DELETED OR AT LEAST NOT USED IN THE END :)
 
 
 final4teams = {
