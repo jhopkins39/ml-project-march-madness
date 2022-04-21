@@ -224,7 +224,7 @@ def analyze_results(num_components=None, num_max=8):
 	print("a better score: ")
 	print(better_score)
 
-analyze_results()
+#analyze_results()
 
 
 
