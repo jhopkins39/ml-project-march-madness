@@ -93,11 +93,11 @@ class DataProcess():
 
 		d = len(train[0])
 
-		train_labels = train[:,d-1]
-		test_labels = test[:,d-1]
+		train_labels = train[:,-1]
+		test_labels = test[:,-1]
 
-		train = train[:,0:d-2]
-		test = test[:,0:d-2]
+		train = train[:,0:-1]
+		test = test[:,0:-1]
 
 		train[np.isnan(train)] = np.median(train[~np.isnan(train)])
 		train_labels[np.isnan(train_labels)] = np.median(train_labels[~np.isnan(train_labels)])
