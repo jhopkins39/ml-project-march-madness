@@ -85,6 +85,31 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
       improve upon it and in the future we plan to implement more of classification algorithms like Gausian Mixture Models(GMM) and 
       Decision Trees.
     </p>
+    <h3 style="color:white;"> Neural Network </h3>
+    <p style="color:white;">
+        Using the preprocessed data mentioned above, we trained a neural network in PyTorch to try and predict the probability that a team would end up in the 
+        final four given its regular game stats. We ahd 30 input features and decided to have two hidden layers: one with 60 neurons and another with 24. The 
+        output of the last hidden layer is then condensed into a single node with a sigmoid function to convert the output to a probability. We trained this 
+        neural network with the Adam optimizer (1e-4 learning rate) and binary cross entropy loss. We trained the model for 100 epochs with a batch size of 64. 
+        While we did try a learning rate of 1e-3 and batch sizes of 32 and 128, these values often led to an unstable loss graph, so we ended up settling on 
+        the hyperparameter values mentioned above. For the output, we decided that a probability > 0.5 would be classified as 1 and <= 0.5 as 0. Due to the 
+        data's unbalanced nature, we decided to measure the accuracy as balanced accuracy instead of raw accuracy as it takes the sizes of each class into 
+        account.
+        <break>
+        Another problem for this current model implementation was that it tended to collapse and output 0 for all inputs. Since each year only had 4 final four 
+        teams, the data was skewed to label 0 (non final four teams). In order to resolve this issue, we decided to utilize a custom loss function based on MSE 
+        loss that reduced the influence of the MSE loss against 0 labels by a certain factor. This new hyperparameter was called zero_weight. We tested values 
+        of 0.01, 0.05, 0.10, 0.25, and 0.50 for zero_weight and found that zero_weight=0.10 performed the best. Values less than 0.10 penalized the loss too 
+        much, resulting in the model overpredicting 1s, and values greater than 0.10 didn't seem to penalize the loss enough.
+        <!-- Add curves.jpg here? -->
+        <break>
+        One other hyperparameter we tuned after training was the threshold. While we initially decided on the arbitrary value of 0.5, we ran the train and test 
+        datasets through the model with different thresholds to see if the prediction accuracy would be any better. In order to have an effective model, we had 
+        to balance precision and recall to try and get the model to correctly identify the final four teams without overclassifying class 1. A decent threshold 
+        for the probability seems to be in the 0.5 to 0.7 range. However, the low F1 score indicates that this type of model may not be the best for this kind 
+        of task.
+        <!-- Add threshold.png here? -->
+    </p>
     <h2 style="color:white; text-decoration:underline"> References </h2>
     <p style="color:white;">
       <ul style="color:white;">
