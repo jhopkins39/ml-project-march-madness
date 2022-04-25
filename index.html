@@ -95,14 +95,14 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
         the hyperparameter values mentioned above. For the output, we decided that a probability > 0.5 would be classified as 1 and <= 0.5 as 0. Due to the 
         data's unbalanced nature, we decided to measure the accuracy as balanced accuracy instead of raw accuracy as it takes the sizes of each class into 
         account.
-        <break>
+        <br>
         Another problem for this current model implementation was that it tended to collapse and output 0 for all inputs. Since each year only had 4 final four 
         teams, the data was skewed to label 0 (non final four teams). In order to resolve this issue, we decided to utilize a custom loss function based on MSE 
         loss that reduced the influence of the MSE loss against 0 labels by a certain factor. This new hyperparameter was called zero_weight. We tested values 
         of 0.01, 0.05, 0.10, 0.25, and 0.50 for zero_weight and found that zero_weight=0.10 performed the best. Values less than 0.10 penalized the loss too 
         much, resulting in the model overpredicting 1s, and values greater than 0.10 didn't seem to penalize the loss enough.
         <!-- Add curves.jpg here? -->
-        <break>
+        <br>
         One other hyperparameter we tuned after training was the threshold. While we initially decided on the arbitrary value of 0.5, we ran the train and test 
         datasets through the model with different thresholds to see if the prediction accuracy would be any better. In order to have an effective model, we had 
         to balance precision and recall to try and get the model to correctly identify the final four teams without overclassifying class 1. A decent threshold 
