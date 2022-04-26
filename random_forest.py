@@ -1,5 +1,4 @@
 from sklearn.ensemble import RandomForestClassifier
-import logistic_regression as lr
 from sklearn.metrics import r2_score
 import numpy as np
 import data_processing
@@ -7,7 +6,7 @@ import data_processing
 
 
 # trains and runs a singular random forest model
-def use_rf_model(n_estimators=500, max_depth=5, num_components=None):
+def use_rf_model(n_estimators=500, max_depth=10, num_components=None):
 
 
 	dp = data_processing.DataProcess()
@@ -23,7 +22,7 @@ def use_rf_model(n_estimators=500, max_depth=5, num_components=None):
 		X, test_X = apply_PCA(X, test_X, num_components)
 
 
-	model = RandomForestClassifier(n_estimators=100, max_depth=5, bootstrap=True)
+	model = RandomForestClassifier(n_estimators=n_estimators, max_depth=max_depth, bootstrap=True)
 	model.fit(X,y)
 
 	predictions = model.predict(test_X)
@@ -46,8 +45,8 @@ def use_rf_model(n_estimators=500, max_depth=5, num_components=None):
 	print("random forest score: ")
 	print(score)
 
-	dp.analyze_results(probabilities, test_y)
+	dp.analyze_results(probabilities, test_y,4)
 
 	return probabilities, test_y
 
-use_rf_model()
+use_rf_model(n_estimators=100, max_depth=5)
