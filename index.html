@@ -103,7 +103,7 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
         much, resulting in the model overpredicting 1s, and values greater than 0.10 didn't seem to penalize the loss enough.
         <br>
         <br>
-        <img src="https://user-images.githubusercontent.com/99891372/165207500-20fc5274-f8d2-4599-92f5-4990a3ca1904.png" alt = "Neural Network Curve" height="350" weight="350">
+        <img src="https://user-images.githubusercontent.com/99891372/165207500-20fc5274-f8d2-4599-92f5-4990a3ca1904.png" alt = "Neural Network Curve" height="350" width="350">
         <br>
         <br>
         One other hyperparameter we tuned after training was the threshold. While we initially decided on the arbitrary value of 0.5, we ran the train and test 
@@ -112,7 +112,9 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
         for the probability seems to be in the 0.5 to 0.7 range. However, the low F1 score indicates that this type of model may not be the best for this kind 
         of task. In the end, we did manage to classify 3 of the 4 final four teams correctly, but the model also ended up classifying teams that did not make 
         the final four as ones that did.
-        <!-- Add threshold.png here? -->
+        <br>
+        <br>
+        <img src="https://user-images.githubusercontent.com/99891372/165208229-a7327b6f-799c-4330-af06-e37b60905c31.png" alt = "Neural Network Thresholds" height="350" width="350">
     </p>
     <h2 style="color:white; text-decoration:underline"> References </h2>
     <p style="color:white;">
