@@ -93,7 +93,7 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
         neural network with the Adam optimizer (1e-4 learning rate) and binary cross entropy loss. We trained the model for 100 epochs with a batch size of 64. 
         While we did try a learning rate of 1e-3 and batch sizes of 32 and 128, these values often led to an unstable loss graph, so we ended up settling on 
         the hyperparameter values mentioned above. For the output, we decided that a probability > 0.5 would be classified as 1 and <= 0.5 as 0. Due to the 
-        data's unbalanced nature, we decided to measure the accuracy as balanced accuracy instead of raw accuracy as it takes the sizes of each class into 
+        the unbalanced nature of the data, we decided to measure the accuracy as balanced accuracy instead of raw accuracy as it takes the sizes of each class into 
         account.
         <br>
         Another problem for this current model implementation was that it tended to collapse and output 0 for all inputs. Since each year only had 4 final four 
