@@ -40,8 +40,7 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
           bracket challenges everywhere.
         </p>
     <h2 style="color:white; text-decoration:underline"> Methods </h2>
-      <p style="color:white;"> Right now there are a couple different methods we are looking at. The first method we are going to try is a logistic regression on the the team's seed in the tournament. It finds the probability on whether or not a team makes it to the final four based on their starting seed. We were also thinking about doing a random forest model (when we learn more hopefully) and even a neural net to give us the teams who will  prevail.
-      </p>
+
       <h4 style="color:white;"> Data Preprocessing </h4>
       <p style="color:white;">
         All of the data preprocessing was done using Pandas DataFrames. First, we created a wrapper class for 
@@ -110,11 +109,13 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
         loss that reduced the influence of the MSE loss against 0 labels by a certain factor. This new hyperparameter was called zero_weight. We tested values 
         of 0.01, 0.05, 0.10, 0.25, and 0.50 for zero_weight and found that zero_weight=0.10 performed the best. Values less than 0.10 penalized the loss too 
         much, resulting in the model overpredicting 1s, and values greater than 0.10 didn't seem to penalize the loss enough.
+    </p>
         <br>
         <br>
         <center><img src="https://user-images.githubusercontent.com/99891372/165207500-20fc5274-f8d2-4599-92f5-4990a3ca1904.png" alt = "Neural Network Curve" height="355" width="1025" class="center"></center>
         <br>
         <br>
+   <p style="color:white;">
         One other hyperparameter we tuned after training was the threshold. While we initially decided on the arbitrary value of 0.5, we ran the train and test 
         datasets through the model with different thresholds to see if the prediction accuracy would be any better. In order to have an effective model, we had 
         to balance precision and recall to try and get the model to correctly identify the final four teams without overclassifying class 1. A decent threshold 
