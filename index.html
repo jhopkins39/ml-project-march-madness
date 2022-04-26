@@ -88,7 +88,7 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
     <h3 style="color:white;"> Neural Network </h3>
     <p style="color:white;">
         Using the preprocessed data mentioned above, we trained a neural network in PyTorch to try and predict the probability that a team would end up in the 
-        final four given its regular game stats. We ahd 30 input features and decided to have two hidden layers: one with 60 neurons and another with 24. The 
+        final four given its regular game stats. We had 30 input features and decided to have two hidden layers: one with 60 neurons and another with 24. The 
         output of the last hidden layer is then condensed into a single node with a sigmoid function to convert the output to a probability. We trained this 
         neural network with the Adam optimizer (1e-4 learning rate) and binary cross entropy loss. We trained the model for 100 epochs with a batch size of 64. 
         While we did try a learning rate of 1e-3 and batch sizes of 32 and 128, these values often led to an unstable loss graph, so we ended up settling on 
