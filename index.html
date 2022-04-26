@@ -61,16 +61,18 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
         The compact data only contains six features relevant to each game, with two of them being the ids of the winning 
         and losing team.
       </p>
-      
+      <h4 style="color:white;"> Logistic Regression </h4>
       <p style="color:white;"> 
-        
+        For the final project, in addition to training other models, we improved our Logistic Regression model. Instead of using just the seed data, we transformed our entire dataset based on every game played to a dataset indexed by the team and the year. The data represents each team’s averages during the season. The data is separated by winning and losing averages and includes their record. From this information, we train our model with 2003-2015 data to predict 2016 data. Instead of narrowing down the teams to a field of 64, we are trying to predict the final four from the entire D1 college basketball field. This goal creates a problematic situation because there are not many true positives to train on and then estimate. Currently, our model returns one team that it believes will make the final four.
       </p>
     <h2 style="color:white; text-decoration:underline"> Results and Discussion </h2>
     <h3 style="color:white;"> Logistic Regression </h3>
     <p style="color:white;"> 
-      For the final project, in addition to training other models, we improved our Logistic Regression model. Instead of using just the seed data, we transformed our entire dataset based on every game played to a dataset indexed by the team and the year. The data represents each team’s averages during the season. The data is separated by winning and losing averages and includes their record. From this information, we train our model with 2003-2015 data to predict 2016 data. Instead of narrowing down the teams to a field of 64, we are trying to predict the final four from the entire D1 college basketball field. This goal creates a problematic situation because there are not many true positives to train on and then estimate. Currently, our model returns one team that it believes will make the final four. This result presents a false positive rate of 0%, which is fantastic. However, it misses the other three teams. To help predict more teams, you can look at the internal probabilities the model creates that each testing data point has of being classified either way. If you look at the eight teams with the highest likelihood of being ranked a final 4 team, 2 of them make the final 4. This outcome is incredible, in our opinion. Going from 341 teams to 4 is tough, and if we can pick eight teams and say that 2 of them will be in the last four standing, that is incredibly powerful. Especially when some of the other options of the eight do not even make the tournament or, from visual inspection, seem unlikely. This can be seen from the output of the logistic regression model our code runs: 
-
+      Right now, our results present a false positive rate of 0%, which is fantastic. However, it misses the other three teams. To help predict more teams, you can look at the internal probabilities the model creates that each testing data point has of being classified either way. If you look at the eight teams with the highest likelihood of being ranked a final 4 team, 2 of them make the final 4. This outcome is incredible, in our opinion. Going from 341 teams to 4 is tough, and if we can pick eight teams and say that 2 of them will be in the last four standing, that is incredibly powerful. Especially when some of the other options of the eight do not even make the tournament or, from visual inspection, seem unlikely. This can be seen from the output of the logistic regression model our code runs: 
     </p>
+    <br>
+    <br>
+    <br>
     <h4 style="color:white;"> Metrics </h4>
     <p style="color:white;">
       We got an accuracy of 94% for our regression model. Although, this accuracy is based on teams not making it to 
