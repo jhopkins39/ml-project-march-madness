@@ -102,7 +102,9 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
         of 0.01, 0.05, 0.10, 0.25, and 0.50 for zero_weight and found that zero_weight=0.10 performed the best. Values less than 0.10 penalized the loss too 
         much, resulting in the model overpredicting 1s, and values greater than 0.10 didn't seem to penalize the loss enough.
         <br>
-        <img src="https://user-images.githubusercontent.com/99891372/165207500-20fc5274-f8d2-4599-92f5-4990a3ca1904.png" alt = "Neural Network Curve" height="512" weight="512">
+        <br>
+        <img src="https://user-images.githubusercontent.com/99891372/165207500-20fc5274-f8d2-4599-92f5-4990a3ca1904.png" alt = "Neural Network Curve" height="350" weight="350">
+        <br>
         <br>
         One other hyperparameter we tuned after training was the threshold. While we initially decided on the arbitrary value of 0.5, we ran the train and test 
         datasets through the model with different thresholds to see if the prediction accuracy would be any better. In order to have an effective model, we had 
