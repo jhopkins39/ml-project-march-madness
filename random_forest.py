@@ -2,7 +2,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import r2_score
 import numpy as np
 import data_processing
-
+from sklearn.metrics import f1_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import precision_score
 
 
 # trains and runs a singular random forest model
@@ -35,6 +37,10 @@ def use_rf_model(n_estimators=500, max_depth=10, num_components=None):
 	print("random forest predictions: ")
 	print(predictions)
 
+	train_predictions = model.predict(X)
+	print("model train data predictions: ")
+	print(train_predictions)
+
 	print("actual answers: ")
 	print(test_y)
 
@@ -46,6 +52,31 @@ def use_rf_model(n_estimators=500, max_depth=10, num_components=None):
 	print(score)
 
 	dp.analyze_results(probabilities, test_y,4)
+
+
+	f1 = f1_score(test_y, predictions)
+	print()
+	print("f1 score: ", f1)
+
+	recall = recall_score(test_y, predictions)
+
+	print("recall score: ", recall)
+
+	precision = precision_score(test_y, predictions,zero_division=1)
+
+	print("precision score: ", precision)
+
+	f1_train = f1_score(y, train_predictions)
+	print()
+	print("train f1 score: ", f1_train)
+
+	recall_train = recall_score(y, train_predictions)
+
+	print("train recall score: ", recall_train)
+
+	precision_train = precision_score(y, train_predictions)
+
+	print("training precision score: ", precision_train)
 
 	return probabilities, test_y
 
