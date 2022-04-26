@@ -77,14 +77,6 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
     <br>
     <center><img src = "https://user-images.githubusercontent.com/99891372/165323649-60003db1-9d61-4f9c-bc14-78d90941e820.png" alt="Logistic Regression Results" height ="708" width = "596"></center>
     <br>
-    <h4 style="color:white;"> Metrics </h4>
-    <p style="color:white;">
-      We got an accuracy of 94% for our regression model. Although, this accuracy is based on teams not making it to 
-      the final four, it gives a good reflection of the teams that eventually made it to the final stage. The testing data had
-      68 teams and our model predicted the correct outcome for 64 of them. Even though we got a decent accuracy, we would like to 
-      improve upon it and in the future we plan to implement more of classification algorithms like Gausian Mixture Models(GMM) and 
-      Decision Trees.
-    </p>
     <h3 style="color:white;"> Random Forest </h3> 
     <p style="color:white;">
       Because the model never predicts positive results, it is too difficult for the classifier to predict any of the teams. The crazy sport of college basketball proves to be too difficult for the random forest model. This is why we look at the probabilities much like we did with the logistic regression model. Looking at the four teams with the highest likelihood, our model can predict one of the final four teams. Like logistic regression, we believe this statistic to be compelling: 
@@ -103,6 +95,7 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
         the hyperparameter values mentioned above. For the output, we decided that a probability > 0.5 would be classified as 1 and <= 0.5 as 0. Due to the 
         the unbalanced nature of the data, we decided to measure the accuracy as balanced accuracy instead of raw accuracy as it takes the sizes of each class into 
         account.
+        <br>
         <br>
         Another problem for this current model implementation was that it tended to collapse and output 0 for all inputs. Since each year only had 4 final four 
         teams, the data was skewed to label 0 (non final four teams). In order to resolve this issue, we decided to utilize a custom loss function based on MSE 
