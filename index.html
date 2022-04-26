@@ -101,7 +101,8 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
         loss that reduced the influence of the MSE loss against 0 labels by a certain factor. This new hyperparameter was called zero_weight. We tested values 
         of 0.01, 0.05, 0.10, 0.25, and 0.50 for zero_weight and found that zero_weight=0.10 performed the best. Values less than 0.10 penalized the loss too 
         much, resulting in the model overpredicting 1s, and values greater than 0.10 didn't seem to penalize the loss enough.
-        <img src="https://user-images.githubusercontent.com/99891372/165206147-f3d4da45-ce99-491d-a6ff-ef916a7c68a8.png" alt = "Neural Network Curve" width ="128" hiehgt="128">
+        <br>
+        <img src="https://user-images.githubusercontent.com/99891372/165206147-f3d4da45-ce99-491d-a6ff-ef916a7c68a8.png" alt = "Neural Network Curve">
         <br>
         One other hyperparameter we tuned after training was the threshold. While we initially decided on the arbitrary value of 0.5, we ran the train and test 
         datasets through the model with different thresholds to see if the prediction accuracy would be any better. In order to have an effective model, we had 
