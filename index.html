@@ -65,6 +65,10 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
       <p style="color:white;"> 
         For the final project, in addition to training other models, we improved our Logistic Regression model. Instead of using just the seed data, we transformed our entire dataset based on every game played to a dataset indexed by the team and the year. The data represents each team’s averages during the season. The data is separated by winning and losing averages and includes their record. From this information, we train our model with 2003-2015 data to predict 2016 data. Instead of narrowing down the teams to a field of 64, we are trying to predict the final four from the entire D1 college basketball field. This goal creates a problematic situation because there are not many true positives to train on and then estimate. Currently, our model returns one team that it believes will make the final four.
       </p>
+    <h4 style="color:white;"> Random Forest </h4>
+    <p style="color:white;">
+      We implemented a random forest model for our second supervised learning classification model. A much similar occurrence happened for this model as with the logistic regression. It never predicts positive results. However, using the model's probabilities, we can predict one of the teams that make it to the final four of March Madness.
+    </p>
     <h2 style="color:white; text-decoration:underline"> Results and Discussion </h2>
     <h3 style="color:white;"> Logistic Regression </h3>
     <p style="color:white;"> 
@@ -72,7 +76,7 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
     </p>
     <br>
     <br>
-    <center><img source = "https://user-images.githubusercontent.com/99891372/165319259-43199189-7124-45f3-a07c-b2c917bda8b2.png" alt="Logistic Regression results" height ="708" width = "596"><\center>
+    <center><img src = "https://user-images.githubusercontent.com/99891372/165323649-60003db1-9d61-4f9c-bc14-78d90941e820.png" alt="Logistic Regression Results" height ="708" width = "596"></center>
     <br>
     <h4 style="color:white;"> Metrics </h4>
     <p style="color:white;">
@@ -82,6 +86,11 @@ src="https://www.youtube.com/embed/q3qS-BMO7Oo">
       improve upon it and in the future we plan to implement more of classification algorithms like Gausian Mixture Models(GMM) and 
       Decision Trees.
     </p>
+    <h3 style="color:white;"> Random Forest </h3> 
+    <p style="color:white;">
+      We implemented a random forest model for our second supervised learning classification model. A much similar occurrence happened for this model as with the logistic regression. It never predicts positive results. However, using the model's probabilities, we can predict one of the teams that make it to the final four of March Madness.
+    </p>  
+    <br>  
     <h3 style="color:white;"> Neural Network </h3>
     <p style="color:white;">
         Using the preprocessed data mentioned above, we trained a neural network in PyTorch to try and predict the probability that a team would end up in the 
